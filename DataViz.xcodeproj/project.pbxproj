@@ -17,6 +17,8 @@
 		44662443203B2500004331D1 /* DataVizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662442203B2500004331D1 /* DataVizTests.swift */; };
 		44662465203B2D7B004331D1 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662464203B2D7B004331D1 /* Storyboard.swift */; };
 		44662467203B2DB3004331D1 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662466203B2DB3004331D1 /* UIViewController+Storyboard.swift */; };
+		44662469203B2EBF004331D1 /* Development-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44662468203B2EBF004331D1 /* Development-Config.plist */; };
+		4466246B203B2ED2004331D1 /* Production-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4466246A203B2ED2004331D1 /* Production-Config.plist */; };
 		83D515B3EAB8C6136B7C8227 /* Pods_DataViz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB8C1D6084D811887AC30805 /* Pods_DataViz.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		44662444203B2500004331D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44662464203B2D7B004331D1 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		44662466203B2DB3004331D1 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
+		44662468203B2EBF004331D1 /* Development-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Development-Config.plist"; sourceTree = "<group>"; };
+		4466246A203B2ED2004331D1 /* Production-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Production-Config.plist"; sourceTree = "<group>"; };
 		60500BC6F8C3B8F7693AECC0 /* Pods-DataVizTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataVizTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D7FDF077B11FD04514B03FC /* Pods-DataViz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataViz.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataViz/Pods-DataViz.release.xcconfig"; sourceTree = "<group>"; };
 		B95E0B467B9B71298665F568 /* Pods-DataViz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataViz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataViz/Pods-DataViz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		44662463203B2D65004331D1 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				44662468203B2EBF004331D1 /* Development-Config.plist */,
+				4466246A203B2ED2004331D1 /* Production-Config.plist */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -298,9 +304,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44662469203B2EBF004331D1 /* Development-Config.plist in Resources */,
 				44662438203B2500004331D1 /* LaunchScreen.storyboard in Resources */,
 				44662435203B2500004331D1 /* Assets.xcassets in Resources */,
 				44662430203B2500004331D1 /* Main.storyboard in Resources */,
+				4466246B203B2ED2004331D1 /* Production-Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

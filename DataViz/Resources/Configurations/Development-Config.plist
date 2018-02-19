@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Development-Config.plist
+   DataViz
+
+   Created by Eugene Tulusha on 2/19/18.
+   Copyright (c) 2018 Eugene Tulusha. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+        <key>environment</key>
+        <string>Development</string>
+        <key>api_url</key>
+        <string>https://jsdemo.envdev.io/sse</string>
+    </dict>
+</plist>
