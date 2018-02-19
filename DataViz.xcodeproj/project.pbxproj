@@ -19,6 +19,10 @@
 		44662467203B2DB3004331D1 /* UIViewController+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662466203B2DB3004331D1 /* UIViewController+Storyboard.swift */; };
 		44662469203B2EBF004331D1 /* Development-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44662468203B2EBF004331D1 /* Development-Config.plist */; };
 		4466246B203B2ED2004331D1 /* Production-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4466246A203B2ED2004331D1 /* Production-Config.plist */; };
+		44662474203B576F004331D1 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662470203B576F004331D1 /* Configuration.swift */; };
+		44662475203B60C0004331D1 /* ConfigurationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466246E203B576F004331D1 /* ConfigurationMock.swift */; };
+		44662476203B60C8004331D1 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466246D203B576F004331D1 /* ConfigurationTests.swift */; };
+		44662478203B6297004331D1 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662477203B6297004331D1 /* ErrorHandling.swift */; };
 		83D515B3EAB8C6136B7C8227 /* Pods_DataViz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB8C1D6084D811887AC30805 /* Pods_DataViz.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +53,10 @@
 		44662466203B2DB3004331D1 /* UIViewController+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Storyboard.swift"; sourceTree = "<group>"; };
 		44662468203B2EBF004331D1 /* Development-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Development-Config.plist"; sourceTree = "<group>"; };
 		4466246A203B2ED2004331D1 /* Production-Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Production-Config.plist"; sourceTree = "<group>"; };
+		4466246D203B576F004331D1 /* ConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		4466246E203B576F004331D1 /* ConfigurationMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationMock.swift; sourceTree = "<group>"; };
+		44662470203B576F004331D1 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		44662477203B6297004331D1 /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		60500BC6F8C3B8F7693AECC0 /* Pods-DataVizTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataVizTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8D7FDF077B11FD04514B03FC /* Pods-DataViz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataViz.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataViz/Pods-DataViz.release.xcconfig"; sourceTree = "<group>"; };
 		B95E0B467B9B71298665F568 /* Pods-DataViz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataViz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataViz/Pods-DataViz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +176,8 @@
 		4466245F203B273D004331D1 /* Service Layer */ = {
 			isa = PBXGroup;
 			children = (
+				4466246C203B576F004331D1 /* Configuration */,
+				44662477203B6297004331D1 /* ErrorHandling.swift */,
 			);
 			path = "Service Layer";
 			sourceTree = "<group>";
@@ -204,6 +214,16 @@
 				4466246A203B2ED2004331D1 /* Production-Config.plist */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		4466246C203B576F004331D1 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				4466246D203B576F004331D1 /* ConfigurationTests.swift */,
+				4466246E203B576F004331D1 /* ConfigurationMock.swift */,
+				44662470203B576F004331D1 /* Configuration.swift */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		FF14CBBE991DEBA81EA71B73 /* Frameworks */ = {
@@ -359,12 +379,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -417,12 +439,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DataViz/Pods-DataViz-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -441,7 +465,9 @@
 			files = (
 				44662465203B2D7B004331D1 /* Storyboard.swift in Sources */,
 				4466242D203B2500004331D1 /* ViewController.swift in Sources */,
+				44662478203B6297004331D1 /* ErrorHandling.swift in Sources */,
 				4466242B203B2500004331D1 /* AppDelegate.swift in Sources */,
+				44662474203B576F004331D1 /* Configuration.swift in Sources */,
 				44662467203B2DB3004331D1 /* UIViewController+Storyboard.swift in Sources */,
 				44662433203B2500004331D1 /* DataViz.xcdatamodeld in Sources */,
 			);
@@ -451,6 +477,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44662475203B60C0004331D1 /* ConfigurationMock.swift in Sources */,
+				44662476203B60C8004331D1 /* ConfigurationTests.swift in Sources */,
 				44662443203B2500004331D1 /* DataVizTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,7 +661,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DB8872T2A;
-				INFOPLIST_FILE = DataVizTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tulusha.DataVizTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -650,7 +678,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DB8872T2A;
-				INFOPLIST_FILE = DataVizTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tulusha.DataVizTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
