@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		066C84DFDF58B213258B2E3E /* Pods_DataVizTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246DA7E2647A79598F90F5DB /* Pods_DataVizTests.framework */; };
 		4466242B203B2500004331D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466242A203B2500004331D1 /* AppDelegate.swift */; };
 		4466242D203B2500004331D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466242C203B2500004331D1 /* ViewController.swift */; };
 		44662430203B2500004331D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4466242E203B2500004331D1 /* Main.storyboard */; };
@@ -14,7 +15,7 @@
 		44662435203B2500004331D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44662434203B2500004331D1 /* Assets.xcassets */; };
 		44662438203B2500004331D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44662436203B2500004331D1 /* LaunchScreen.storyboard */; };
 		44662443203B2500004331D1 /* DataVizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662442203B2500004331D1 /* DataVizTests.swift */; };
-		4466244E203B2500004331D1 /* DataVizUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466244D203B2500004331D1 /* DataVizUITests.swift */; };
+		83D515B3EAB8C6136B7C8227 /* Pods_DataViz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB8C1D6084D811887AC30805 /* Pods_DataViz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,16 +26,10 @@
 			remoteGlobalIDString = 44662426203B2500004331D1;
 			remoteInfo = DataViz;
 		};
-		4466244A203B2500004331D1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4466241F203B2500004331D1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 44662426203B2500004331D1;
-			remoteInfo = DataViz;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		246DA7E2647A79598F90F5DB /* Pods_DataVizTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataVizTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44662427203B2500004331D1 /* DataViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4466242A203B2500004331D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4466242C203B2500004331D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,9 +41,11 @@
 		4466243E203B2500004331D1 /* DataVizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataVizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44662442203B2500004331D1 /* DataVizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVizTests.swift; sourceTree = "<group>"; };
 		44662444203B2500004331D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44662449203B2500004331D1 /* DataVizUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataVizUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4466244D203B2500004331D1 /* DataVizUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVizUITests.swift; sourceTree = "<group>"; };
-		4466244F203B2500004331D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60500BC6F8C3B8F7693AECC0 /* Pods-DataVizTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataVizTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D7FDF077B11FD04514B03FC /* Pods-DataViz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataViz.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataViz/Pods-DataViz.release.xcconfig"; sourceTree = "<group>"; };
+		B95E0B467B9B71298665F568 /* Pods-DataViz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataViz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataViz/Pods-DataViz.debug.xcconfig"; sourceTree = "<group>"; };
+		EB8C1D6084D811887AC30805 /* Pods_DataViz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataViz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F92BECCD915589BFC1940641 /* Pods-DataVizTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataVizTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83D515B3EAB8C6136B7C8227 /* Pods_DataViz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,26 +61,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44662446203B2500004331D1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				066C84DFDF58B213258B2E3E /* Pods_DataVizTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08FAAC85A01E4E75F085779A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B95E0B467B9B71298665F568 /* Pods-DataViz.debug.xcconfig */,
+				8D7FDF077B11FD04514B03FC /* Pods-DataViz.release.xcconfig */,
+				60500BC6F8C3B8F7693AECC0 /* Pods-DataVizTests.debug.xcconfig */,
+				F92BECCD915589BFC1940641 /* Pods-DataVizTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4466241E203B2500004331D1 = {
 			isa = PBXGroup;
 			children = (
 				44662429203B2500004331D1 /* DataViz */,
-				44662441203B2500004331D1 /* DataVizTests */,
-				4466244C203B2500004331D1 /* DataVizUITests */,
+				44662441203B2500004331D1 /* Tests */,
 				44662428203B2500004331D1 /* Products */,
+				08FAAC85A01E4E75F085779A /* Pods */,
+				FF14CBBE991DEBA81EA71B73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,7 +95,6 @@
 			children = (
 				44662427203B2500004331D1 /* DataViz.app */,
 				4466243E203B2500004331D1 /* DataVizTests.xctest */,
-				44662449203B2500004331D1 /* DataVizUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,33 +102,97 @@
 		44662429203B2500004331D1 /* DataViz */ = {
 			isa = PBXGroup;
 			children = (
-				4466242A203B2500004331D1 /* AppDelegate.swift */,
-				4466242C203B2500004331D1 /* ViewController.swift */,
-				4466242E203B2500004331D1 /* Main.storyboard */,
-				44662434203B2500004331D1 /* Assets.xcassets */,
-				44662436203B2500004331D1 /* LaunchScreen.storyboard */,
+				4466245B203B2580004331D1 /* Code */,
+				4466245C203B2581004331D1 /* Resources */,
 				44662439203B2500004331D1 /* Info.plist */,
 				44662431203B2500004331D1 /* DataViz.xcdatamodeld */,
 			);
 			path = DataViz;
 			sourceTree = "<group>";
 		};
-		44662441203B2500004331D1 /* DataVizTests */ = {
+		44662441203B2500004331D1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				44662442203B2500004331D1 /* DataVizTests.swift */,
 				44662444203B2500004331D1 /* Info.plist */,
 			);
-			path = DataVizTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		4466244C203B2500004331D1 /* DataVizUITests */ = {
+		4466245B203B2580004331D1 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				4466244D203B2500004331D1 /* DataVizUITests.swift */,
-				4466244F203B2500004331D1 /* Info.plist */,
+				44662461203B273D004331D1 /* Context */,
+				4466245E203B273D004331D1 /* Flow */,
+				44662460203B273D004331D1 /* Data Layer */,
+				4466245D203B273D004331D1 /* Presentation Layer */,
+				4466245F203B273D004331D1 /* Service Layer */,
+				4466242A203B2500004331D1 /* AppDelegate.swift */,
 			);
-			path = DataVizUITests;
+			path = Code;
+			sourceTree = "<group>";
+		};
+		4466245C203B2581004331D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				44662462203B2781004331D1 /* Storyboards */,
+				44662434203B2500004331D1 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4466245D203B273D004331D1 /* Presentation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				4466242C203B2500004331D1 /* ViewController.swift */,
+			);
+			path = "Presentation Layer";
+			sourceTree = "<group>";
+		};
+		4466245E203B273D004331D1 /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
+		4466245F203B273D004331D1 /* Service Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Service Layer";
+			sourceTree = "<group>";
+		};
+		44662460203B273D004331D1 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Data Layer";
+			sourceTree = "<group>";
+		};
+		44662461203B273D004331D1 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		44662462203B2781004331D1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4466242E203B2500004331D1 /* Main.storyboard */,
+				44662436203B2500004331D1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FF14CBBE991DEBA81EA71B73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB8C1D6084D811887AC30805 /* Pods_DataViz.framework */,
+				246DA7E2647A79598F90F5DB /* Pods_DataVizTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,9 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44662452203B2500004331D1 /* Build configuration list for PBXNativeTarget "DataViz" */;
 			buildPhases = (
+				88F5BA3E8FD4C1FADFF36068 /* [CP] Check Pods Manifest.lock */,
 				44662423203B2500004331D1 /* Sources */,
 				44662424203B2500004331D1 /* Frameworks */,
 				44662425203B2500004331D1 /* Resources */,
+				8B6DE837019085533160CF9C /* [CP] Embed Pods Frameworks */,
+				04494B005D7173C845EA12CC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44662455203B2500004331D1 /* Build configuration list for PBXNativeTarget "DataVizTests" */;
 			buildPhases = (
+				67756989CEA4D5AA168D3520 /* [CP] Check Pods Manifest.lock */,
 				4466243A203B2500004331D1 /* Sources */,
 				4466243B203B2500004331D1 /* Frameworks */,
 				4466243C203B2500004331D1 /* Resources */,
+				6597C255C81497F04CD7BFF9 /* [CP] Embed Pods Frameworks */,
+				4A4DE01F6FE81E4B99674EF3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -165,24 +238,6 @@
 			productName = DataVizTests;
 			productReference = 4466243E203B2500004331D1 /* DataVizTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		44662448203B2500004331D1 /* DataVizUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 44662458203B2500004331D1 /* Build configuration list for PBXNativeTarget "DataVizUITests" */;
-			buildPhases = (
-				44662445203B2500004331D1 /* Sources */,
-				44662446203B2500004331D1 /* Frameworks */,
-				44662447203B2500004331D1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4466244B203B2500004331D1 /* PBXTargetDependency */,
-			);
-			name = DataVizUITests;
-			productName = DataVizUITests;
-			productReference = 44662449203B2500004331D1 /* DataVizUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -199,11 +254,6 @@
 						ProvisioningStyle = Automatic;
 					};
 					4466243D203B2500004331D1 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 44662426203B2500004331D1;
-					};
-					44662448203B2500004331D1 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 44662426203B2500004331D1;
@@ -225,7 +275,6 @@
 			targets = (
 				44662426203B2500004331D1 /* DataViz */,
 				4466243D203B2500004331D1 /* DataVizTests */,
-				44662448203B2500004331D1 /* DataVizUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -248,14 +297,120 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44662447203B2500004331D1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04494B005D7173C845EA12CC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataViz/Pods-DataViz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		4A4DE01F6FE81E4B99674EF3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6597C255C81497F04CD7BFF9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataVizTests/Pods-DataVizTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67756989CEA4D5AA168D3520 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DataVizTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88F5BA3E8FD4C1FADFF36068 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DataViz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B6DE837019085533160CF9C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DataViz/Pods-DataViz-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataViz/Pods-DataViz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		44662423203B2500004331D1 /* Sources */ = {
@@ -276,14 +431,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44662445203B2500004331D1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4466244E203B2500004331D1 /* DataVizUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -291,11 +438,6 @@
 			isa = PBXTargetDependency;
 			target = 44662426203B2500004331D1 /* DataViz */;
 			targetProxy = 4466243F203B2500004331D1 /* PBXContainerItemProxy */;
-		};
-		4466244B203B2500004331D1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 44662426203B2500004331D1 /* DataViz */;
-			targetProxy = 4466244A203B2500004331D1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -428,11 +570,13 @@
 		};
 		44662453203B2500004331D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B95E0B467B9B71298665F568 /* Pods-DataViz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DB8872T2A;
 				INFOPLIST_FILE = DataViz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tulusha.DataViz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,11 +587,13 @@
 		};
 		44662454203B2500004331D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8D7FDF077B11FD04514B03FC /* Pods-DataViz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DB8872T2A;
 				INFOPLIST_FILE = DataViz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tulusha.DataViz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,8 +604,8 @@
 		};
 		44662456203B2500004331D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60500BC6F8C3B8F7693AECC0 /* Pods-DataVizTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DB8872T2A;
@@ -475,8 +621,8 @@
 		};
 		44662457203B2500004331D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F92BECCD915589BFC1940641 /* Pods-DataVizTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9DB8872T2A;
@@ -487,38 +633,6 @@
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DataViz.app/DataViz";
-			};
-			name = Release;
-		};
-		44662459203B2500004331D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9DB8872T2A;
-				INFOPLIST_FILE = DataVizUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tulusha.DataVizUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DataViz;
-			};
-			name = Debug;
-		};
-		4466245A203B2500004331D1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9DB8872T2A;
-				INFOPLIST_FILE = DataVizUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tulusha.DataVizUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DataViz;
 			};
 			name = Release;
 		};
@@ -548,15 +662,6 @@
 			buildConfigurations = (
 				44662456203B2500004331D1 /* Debug */,
 				44662457203B2500004331D1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		44662458203B2500004331D1 /* Build configuration list for PBXNativeTarget "DataVizUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				44662459203B2500004331D1 /* Debug */,
-				4466245A203B2500004331D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

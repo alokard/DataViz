@@ -1,0 +1,52 @@
+## Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+Icon
+
+
+## IDE (Xcode, AppCode, Pods)
+build/
+DerivedData
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+# *.xcworkspace
+!default.xcworkspace
+xcuserdata
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+*.moved-aside
+.idea/
+Pods
+
+*/environment.h
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the 
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
+
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
