@@ -50,3 +50,4 @@ Pods
 fastlane/report.xml
 fastlane/screenshots
 fastlane/test_output
+DataViz.xcodeproj/xcuserdata/**
