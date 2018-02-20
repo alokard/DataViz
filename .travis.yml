@@ -2,5 +2,6 @@ language: swift
 osx_image: xcode9.2
 before_install:
 - bundle install
+install:
 script:
 - fastlane test
