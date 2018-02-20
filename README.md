@@ -1,8 +1,7 @@
 # DataViz
 
 [![Swift Version][swift-image]](https://img.shields.io/badge/swift-4.0-orange.svg)
-[![Build Status][https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square]](https://travis-ci.org/dbader/node-datadog-metrics)
-[![CircleCI](https://circleci.com/gh/wireapp/wire-ios.svg?style=shield)](https://circleci.com/gh/wireapp/wire-ios)
+[![Build Status][https://img.shields.io/travis/alokard/DataViz/master.svg?style=flat-square]](https://travis-ci.org/alokard/DataViz)
 
 This is a demo project of measurements data visualization that comes from network stream (EventSource).
 
