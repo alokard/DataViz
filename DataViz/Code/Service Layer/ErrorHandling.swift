@@ -1,13 +1,17 @@
 import RxSwift
 import RxCocoa
 
-public protocol ErrorHandling: class {
+protocol ErrorHandling: class {
     var errorSubject: PublishSubject<[Error]>? { get }
 
     func record(error: Error, additionalInfo: [String: Any]?)
 }
 
-public extension ErrorHandling {
+protocol HasErrorHandler {
+    var errorHandler: ErrorHandling { get }
+}
+
+extension ErrorHandling {
     public var errorSubject: PublishSubject<[Error]>? { return nil }
 
     func handle(error: Error) {

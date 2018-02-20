@@ -1,19 +1,23 @@
 import Foundation
 
 
-public enum ConfigurationError: Error {
+enum ConfigurationError: Error {
     case missedItem(String)
     case wrongItemType(String)
     case notInitialized
 }
 
-public protocol Configuration {
+protocol Configuration {
     var environmentName: String { get }
 
     var appName: String { get }
     var appVersion: String { get }
     var buildVersion: String { get }
     var apiPath: String { get }
+}
+
+protocol HasConfiguration {
+    var configuration: Configuration { get }
 }
 
 protocol Environment {

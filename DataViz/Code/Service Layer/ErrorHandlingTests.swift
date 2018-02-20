@@ -1,15 +1,21 @@
-//
-//  DataVizTests.swift
-//  DataVizTests
-//
-//  Created by Eugene Tulusha on 2/19/18.
-//  Copyright © 2018 Eugene Tulusha. All rights reserved.
-//
-
 import XCTest
+import RxSwift
 @testable import DataViz
 
-class DataVizTests: XCTestCase {
+class ErrorHandlingMock: ErrorHandling {
+    let errorSubject: PublishSubject<[Error]>? = PublishSubject()
+
+    private(set) var recordErrorInvoked = false
+    private(set) var recordedError: Error?
+    private(set) var recordedAdditionalInfo: [String : Any]?
+    func record(error: Error, additionalInfo: [String : Any]?) {
+        recordErrorInvoked = true
+        recordedError = error
+        recordedAdditionalInfo = additionalInfo
+    }
+}
+
+class ErrorHandlingTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -25,12 +31,4 @@ class DataVizTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }

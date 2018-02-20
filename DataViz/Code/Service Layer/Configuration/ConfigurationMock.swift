@@ -7,5 +7,7 @@ class ConfigurationMock: Configuration {
     var appVersion: String = ""
     var appName: String = ""
     var buildVersion: String = ""
+
+    init() { }
 }
 
