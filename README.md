@@ -1,7 +1,7 @@
 # DataViz
 
-[![Swift Version][swift-image]](https://img.shields.io/badge/swift-4.0-orange.svg)
-[![Build Status][https://img.shields.io/travis/alokard/DataViz/master.svg?style=flat-square]](https://travis-ci.org/alokard/DataViz)
+[![Swift Version](https://img.shields.io/badge/swift-4.0-orange.svg)](https://swift.org/)
+[![Build Status](https://img.shields.io/travis/alokard/DataViz/master.svg?style=flat-square)](https://travis-ci.org/alokard/DataViz)
 
 This is a demo project of measurements data visualization that comes from network stream (EventSource).
 
