@@ -2,40 +2,35 @@ import XCTest
 @testable import DataViz
 
 class ContextMock: FlowContext {
+    let eventSourceMock = EventSourceSessionMock()
+    var eventSource: EventSourceSession { return eventSourceMock }
+
     let configurationMock = ConfigurationMock()
     var configuration: Configuration { return configurationMock }
 
     let errorHandlerMock = ErrorHandlingMock()
-    var errorHandler: ErrorHandling { return errorHandlerMock }
-
-    func newQueue() -> OperationQueue {
-        return OperationQueue()
-    }
-
-    let urlSessionMock = URLSessionMock()
-    private(set) var newUrlSessionInvoked = false
-    private(set) var newUrlSessionConfiguration: URLSessionConfiguration?
-    func newUrlSession(configuration: URLSessionConfiguration, delegate: URLSessionDataDelegate, delegateQueue: OperationQueue) -> URLSessionProtocol {
-        newUrlSessionInvoked = true
-        newUrlSessionConfiguration = configuration
-        return urlSessionMock
-    }
+    var errorHandler: ErrorHandling { return errorHandlerMock }    
 }
 
 class ContextTests: XCTestCase {
-    
+    var eventSource: EventSourceSessionMock!
+    var sut: Context!
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        eventSource = EventSourceSessionMock()
+        sut = Context(configuration: ConfigurationMock(),
+                      errorHandler: ErrorHandlingMock(),
+                      eventSource: eventSource)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    func testNoMemoryRetainCyclesWithEventSourceOnDeinit() {
+        sut = nil
+        XCTAssertTrue(eventSource.stopInvoked)
     }
 }

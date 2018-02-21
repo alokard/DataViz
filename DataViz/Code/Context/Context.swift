@@ -1,24 +1,20 @@
 import Foundation
 
-typealias FlowContext = HasConfiguration & HasErrorHandler & QueueProducer & URLSessionProducer
+typealias FlowContext = HasConfiguration & HasErrorHandler & HasEventSourceSession
 
-struct Context: FlowContext {
-    var configuration: Configuration
-
-    let config: Configuration
+class Context: FlowContext {
+    let configuration: Configuration
     let errorHandler: ErrorHandling
+    let eventSource: EventSourceSession
 
-    func newQueue() -> OperationQueue {
-        return OperationQueue()
+    deinit {
+        eventSource.stop()
     }
 
-    func newUrlSession(configuration: URLSessionConfiguration,
-                       delegate: URLSessionDataDelegate,
-                       delegateQueue: OperationQueue) -> URLSessionProtocol {
-        return URLSession(configuration: configuration, delegate: delegate, delegateQueue: delegateQueue)
+    init(configuration: Configuration, errorHandler: ErrorHandling, eventSource: EventSourceSession) {
+        self.configuration = configuration
+        self.errorHandler = errorHandler
+        self.eventSource = eventSource
     }
 }
 
-protocol QueueProducer {
-    func newQueue() -> OperationQueue
-}

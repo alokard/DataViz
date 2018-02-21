@@ -15,8 +15,15 @@ protocol EventSourceSession {
     func stop()
 }
 
+protocol HasEventSourceSession {
+    var eventSource: EventSourceSession { get }
+}
+
+/// *Important*
+/// The URLSession object keeps a strong reference to the delegate until app exits or explicitly invalidates the session.
+/// If you don’t call stop to invalidate URLSession, your app leaks memory until it exits.
 class EventSourceSessionImpl: NSObject, EventSourceSession, URLSessionDataDelegate {
-    typealias Context = URLSessionProducer & QueueProducer
+    typealias URLSessionConstructor = (URLSessionConfiguration, URLSessionDataDelegate, OperationQueue) -> URLSessionProtocol
 
     private let stateVariable = Variable(EventSourceSessionState.closed)
     var state: Observable<EventSourceSessionState> { return stateVariable.asObservable() }
@@ -28,20 +35,25 @@ class EventSourceSessionImpl: NSObject, EventSourceSession, URLSessionDataDelega
     var data: Observable<String> { return dataSubject.asObservable() }
 
     private let url: URL
-    private let context: Context
+    private let sessionConstructor: URLSessionConstructor
     private let receivedString: NSString?
 
     private var urlSession: URLSessionProtocol?
     private var task: URLSessionDataTaskProtocol?
 
-    private var operationQueue: OperationQueue
+    private var operationQueue = OperationQueue()
     private let receivedDataBuffer = NSMutableData()
     private let validNewlineCharacters = ["\n"]
 
-    public init(context: Context, url: URL) {
+    convenience init(url: URL) {
+        self.init(url: url) { (configuration, delegate, queue) -> URLSessionProtocol in
+            return URLSession(configuration: configuration, delegate: delegate, delegateQueue: queue)
+        }
+    }
+
+    init(url: URL, urlSessionConstructor: @escaping URLSessionConstructor) {
         self.url = url
-        self.context = context
-        self.operationQueue = context.newQueue()
+        self.sessionConstructor = urlSessionConstructor
         self.receivedString = nil
 
         super.init()
@@ -55,9 +67,7 @@ class EventSourceSessionImpl: NSObject, EventSourceSession, URLSessionDataDelega
         configuration.timeoutIntervalForResource = TimeInterval(INT_MAX)
 
         self.stateVariable.value = .connecting
-        self.urlSession = context.newUrlSession(configuration: configuration,
-                                                delegate: self,
-                                                delegateQueue: operationQueue)
+        self.urlSession = sessionConstructor(configuration, self, operationQueue)
         self.task = urlSession!.dataTask(with: self.url)
 
         self.task?.resume()

@@ -13,7 +13,7 @@ protocol Configuration {
     var appName: String { get }
     var appVersion: String { get }
     var buildVersion: String { get }
-    var apiPath: String { get }
+    var apiUrl: URL? { get }
 }
 
 protocol HasConfiguration {
@@ -104,8 +104,8 @@ extension ConfigurationImpl: Configuration {
         return info[kCFBundleNameKey as String] as! String
     }
 
-    public var apiPath: String {
-        return getValueForKey("apiUrl", default: appName)
+    public var apiUrl: URL? {
+        return URL(string: getValueForKey("apiUrl", default: appName))
     }
 }
 

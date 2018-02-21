@@ -2,6 +2,24 @@ import XCTest
 import RxSwift
 @testable import DataViz
 
+class EventSourceSessionMock: EventSourceSession {
+    var state: Observable<EventSourceSessionState> = PublishSubject.never()
+
+    var error: Observable<Error> = PublishSubject.never()
+
+    var data: Observable<String> = PublishSubject.never()
+
+    private(set) var startInvoked = false
+    func start() {
+        startInvoked = true
+    }
+
+    private(set) var stopInvoked = false
+    func stop() {
+        stopInvoked = true
+    }
+}
+
 class EventSourceSessionTests: XCTestCase {
 
     var context: ContextMock!
@@ -13,12 +31,23 @@ class EventSourceSessionTests: XCTestCase {
     var error: Error?
     var data: String?
 
+    var urlSession: URLSessionMock!
+    var urlSessionConstructorInvoked = false
+    var urlSessionConstructorConfiguration: URLSessionConfiguration?
+
     override func setUp() {
         super.setUp()
 
         disposeBag = DisposeBag()
         context = ContextMock()
-        sut = EventSourceSessionImpl(context: context, url: testUrl)
+
+        let sessionCunstructor: EventSourceSessionImpl.URLSessionConstructor = { [unowned self] configuration, delegate, queue in
+            self.urlSessionConstructorInvoked = true
+            self.urlSessionConstructorConfiguration = configuration
+            self.urlSession = URLSessionMock(delegate: delegate)
+            return self.urlSession
+        }
+        sut = EventSourceSessionImpl(url: testUrl, urlSessionConstructor: sessionCunstructor)
         sut.state.subscribe(onNext: { [weak self] state in
             self?.state = state
         }).disposed(by: disposeBag)
@@ -51,20 +80,20 @@ class EventSourceSessionTests: XCTestCase {
 
     func testCreateNewURLSessionOnStart() {
         sut.start()
-        XCTAssertTrue(context.newUrlSessionInvoked)
+        XCTAssertTrue(urlSessionConstructorInvoked)
     }
 
     func testCorrectSessionSetupOnStart() {
         sut.start()
-        XCTAssertEqual(context.urlSessionMock.dataTaskUrl, testUrl)
-        XCTAssertEqual(context.newUrlSessionConfiguration?.timeoutIntervalForRequest, TimeInterval(INT_MAX))
-        XCTAssertEqual(context.newUrlSessionConfiguration?.timeoutIntervalForResource, TimeInterval(INT_MAX))
+        XCTAssertEqual(urlSession.dataTaskUrl, testUrl)
+        XCTAssertEqual(urlSessionConstructorConfiguration?.timeoutIntervalForRequest, TimeInterval(INT_MAX))
+        XCTAssertEqual(urlSessionConstructorConfiguration?.timeoutIntervalForResource, TimeInterval(INT_MAX))
     }
 
     func testStartSessionDataTaskOnStart() {
         sut.start()
-        XCTAssertTrue(context.urlSessionMock.dataTaskInvoked)
-        XCTAssertTrue(context.urlSessionMock.dataTaskMock.resumeInvoked)
+        XCTAssertTrue(urlSession.dataTaskInvoked)
+        XCTAssertTrue(urlSession.dataTaskMock.resumeInvoked)
     }
 
     func testClosedStateOnStop() {
@@ -76,7 +105,7 @@ class EventSourceSessionTests: XCTestCase {
     func testInvalidateAndCancelURLSessionRequestOnStop() {
         sut.start()
         sut.stop()
-        XCTAssertTrue(context.urlSessionMock.invalidateAndCancelInvoked)
+        XCTAssertTrue(urlSession.invalidateAndCancelInvoked)
     }
 
     func testErrorOnUrlSessionDelegateDidCompleteWithError() {

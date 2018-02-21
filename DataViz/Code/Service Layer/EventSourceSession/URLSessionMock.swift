@@ -8,6 +8,11 @@ class URLSessionMock: URLSessionProtocol {
     private(set) var dataTaskUrl: URL?
     private(set) var invalidateAndCancelInvoked: Bool = false
 
+    private(set) var delegate: URLSessionDelegate? //Mimic URLSession behevior
+    init(delegate: URLSessionDelegate?) {
+        self.delegate = delegate
+    }
+
     func dataTask(with url: URL) -> URLSessionDataTaskProtocol {
         dataTaskInvoked = true
         dataTaskUrl = url
@@ -15,6 +20,7 @@ class URLSessionMock: URLSessionProtocol {
     }
 
     func invalidateAndCancel() {
+        delegate = nil
         invalidateAndCancelInvoked = true
     }
 }

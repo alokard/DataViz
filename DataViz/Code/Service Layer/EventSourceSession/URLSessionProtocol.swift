@@ -1,12 +1,6 @@
 import Foundation
 
-protocol URLSessionProducer {
-    func newUrlSession(configuration: URLSessionConfiguration,
-                       delegate: URLSessionDataDelegate,
-                       delegateQueue: OperationQueue) -> URLSessionProtocol
-}
-
-protocol URLSessionProtocol {
+protocol URLSessionProtocol: class {
     func dataTask(with url: URL) -> URLSessionDataTaskProtocol
     func invalidateAndCancel()
 }
