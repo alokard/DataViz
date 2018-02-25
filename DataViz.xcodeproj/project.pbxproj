@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		066C84DFDF58B213258B2E3E /* Pods_DataVizTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246DA7E2647A79598F90F5DB /* Pods_DataVizTests.framework */; };
+		4447F619204343F00005821A /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4447F618204343F00005821A /* CoreDataService.swift */; };
 		445B6ACA203C20BC00B4E3BA /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445B6AC9203C20BC00B4E3BA /* URLSessionProtocol.swift */; };
 		445B6ACC203C22A900B4E3BA /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445B6ACB203C22A900B4E3BA /* Context.swift */; };
 		445B6ACE203C27A100B4E3BA /* EventSourceSessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445B6ACD203C27A100B4E3BA /* EventSourceSessionTests.swift */; };
@@ -47,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		246DA7E2647A79598F90F5DB /* Pods_DataVizTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataVizTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4447F618204343F00005821A /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		445B6AC9203C20BC00B4E3BA /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		445B6ACB203C22A900B4E3BA /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		445B6ACD203C27A100B4E3BA /* EventSourceSessionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSourceSessionTests.swift; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 				F92BECCD915589BFC1940641 /* Pods-DataVizTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		4447F617204343D90005821A /* CoreDataService */ = {
+			isa = PBXGroup;
+			children = (
+				4447F618204343F00005821A /* CoreDataService.swift */,
+			);
+			path = CoreDataService;
 			sourceTree = "<group>";
 		};
 		445B6AC8203C207800B4E3BA /* EventSourceSession */ = {
@@ -204,6 +214,7 @@
 		4466245F203B273D004331D1 /* Service Layer */ = {
 			isa = PBXGroup;
 			children = (
+				4447F617204343D90005821A /* CoreDataService */,
 				445B6AC8203C207800B4E3BA /* EventSourceSession */,
 				4466246C203B576F004331D1 /* Configuration */,
 				44662477203B6297004331D1 /* ErrorHandling.swift */,
@@ -499,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				445B6ACA203C20BC00B4E3BA /* URLSessionProtocol.swift in Sources */,
+				4447F619204343F00005821A /* CoreDataService.swift in Sources */,
 				44662465203B2D7B004331D1 /* Storyboard.swift in Sources */,
 				4466242D203B2500004331D1 /* ViewController.swift in Sources */,
 				445B6ACC203C22A900B4E3BA /* Context.swift in Sources */,

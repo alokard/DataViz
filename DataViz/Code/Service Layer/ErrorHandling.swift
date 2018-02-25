@@ -21,12 +21,6 @@ extension ErrorHandling {
     func handle(errors: [Error], silent: Bool = false) {
         var publish: [Error] = []
         for error in errors {
-
-            //TODO: add remote logging if needed for error type
-//            if logRequired {
-//                log(error: error)
-//            }
-
             if !silent {
                 publish.append(error)
             }
@@ -57,5 +51,16 @@ extension ErrorHandling {
 
         let errorSubjects = errors.flatMap { $0.errorSubject }
         return Observable.from(errorSubjects).merge().bind(to: subject)
+    }
+
+    func record(error: Error, additionalInfo: [String: Any]?) {
+        #if DEBUG
+            print("⚠️ \(error)")
+            if let info = additionalInfo {
+                print("\(info)")
+            }
+        #else
+            //TODO: Record error with some monitoring tool like Crashlytics
+        #endif
     }
 }
