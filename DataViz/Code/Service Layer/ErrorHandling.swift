@@ -64,3 +64,5 @@ extension ErrorHandling {
         #endif
     }
 }
+
+class SimpleErrorHandler: ErrorHandling { }

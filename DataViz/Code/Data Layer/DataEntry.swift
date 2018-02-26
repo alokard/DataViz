@@ -1,12 +1,14 @@
 import Foundation
 
 class DataEntry<T> {
+    let id: String
     let name: String
     let unit: String?
     let measurements: [(TimeInterval, T)]?
 
     init(json: JSON) throws {
         name = try json.parse("name")
+        id = try json.parse("_id")
         unit = json.parse("unit")
         guard let measurements: [Any] = json.parse("measurements") else {
             self.measurements = nil

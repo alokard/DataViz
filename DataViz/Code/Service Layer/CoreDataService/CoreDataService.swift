@@ -2,11 +2,15 @@ import CoreData
 import RxSwift
 
 protocol CoreDataService: ErrorHandling {
-    var persistentContainer: NSPersistentContainer {get}
-    var viewContext: NSManagedObjectContext {get}
-    var backgroundContext: NSManagedObjectContext {get}
+    var persistentContainer: NSPersistentContainer { get }
+    var viewContext: NSManagedObjectContext { get }
+    var backgroundContext: NSManagedObjectContext { get }
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void)
     func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void)
+}
+
+protocol HasCoreData {
+    var coreDataService: CoreDataService { get }
 }
 
 final class CoreDataServiceImpl: CoreDataService {
