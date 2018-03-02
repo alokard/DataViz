@@ -4,9 +4,9 @@ import Foundation
 class URLSessionMock: URLSessionProtocol {
     let dataTaskMock = URLSessionDataTaskMock()
 
-    private(set) var dataTaskInvoked: Bool = false
-    private(set) var dataTaskUrl: URL?
-    private(set) var invalidateAndCancelInvoked: Bool = false
+    var dataTaskInvoked: Bool = false
+    var dataTaskUrl: URL?
+    var invalidateAndCancelInvoked: Bool = false
 
     private(set) var delegate: URLSessionDelegate? //Mimic URLSession behevior
     init(delegate: URLSessionDelegate?) {
@@ -26,7 +26,7 @@ class URLSessionMock: URLSessionProtocol {
 }
 
 class URLSessionDataTaskMock: URLSessionDataTaskProtocol {
-    private(set) var resumeInvoked: Bool = false
+    var resumeInvoked: Bool = false
     func resume() {
         resumeInvoked = true
     }

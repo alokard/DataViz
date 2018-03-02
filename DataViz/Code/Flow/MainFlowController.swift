@@ -16,8 +16,15 @@ class MainFlowController: FlowController {
     }
 
     func showStartScreen() {
-        let controller = ViewController.from(storyboard: .main)
-        controller.managedObjectContext = context.coreDataService.viewContext
+        let controller = HomeViewController.from(storyboard: .main)
+        let handlers = HomeViewModelImpl.HandlersContainer(showDetails: { _ in })
+        controller.createViewModel = HomeViewModelImpl.create(context: context, data: nil, handlers: handlers)
         navigation.setViewControllers([controller], animated: false)
+    }
+
+    func showTemperatureScreen() {
+        let controller = TemperatureViewController.from(storyboard: .main)
+//        controller.managedObjectContext = context.coreDataService.viewContext
+        navigation.pushViewController(controller, animated: true)
     }
 }

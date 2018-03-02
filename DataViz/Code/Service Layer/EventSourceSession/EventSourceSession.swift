@@ -11,6 +11,7 @@ protocol EventSourceSession {
     var state: Observable<EventSourceSessionState> { get }
     var error: Observable<Error> { get }
     var data: Observable<String> { get }
+    var inProgress: Bool { get }
     func start()
     func stop()
 }
@@ -33,6 +34,10 @@ class EventSourceSessionImpl: NSObject, EventSourceSession, URLSessionDataDelega
 
     private let dataSubject = PublishSubject<String>()
     var data: Observable<String> { return dataSubject.asObservable() }
+
+    var inProgress: Bool {
+        return stateVariable.value != .closed
+    }
 
     private let url: URL
     private let sessionConstructor: URLSessionConstructor
@@ -62,6 +67,7 @@ class EventSourceSessionImpl: NSObject, EventSourceSession, URLSessionDataDelega
     //Mark: Start
 
     func start() {
+        guard self.stateVariable.value == .closed else { return }
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = TimeInterval(INT_MAX)
         configuration.timeoutIntervalForResource = TimeInterval(INT_MAX)

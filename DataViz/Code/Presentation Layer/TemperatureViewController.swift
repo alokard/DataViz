@@ -2,7 +2,7 @@ import UIKit
 import CoreData
 import RxSwift
 
-class ViewController: UITableViewController {
+class TemperatureViewController: UITableViewController {
 
     var managedObjectContext: NSManagedObjectContext? = nil
     let disposeBag = DisposeBag()
@@ -43,13 +43,13 @@ class ViewController: UITableViewController {
     }()
 }
 
-extension ViewController : NSFetchedResultsControllerDelegate {
+extension TemperatureViewController : NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.tableView?.reloadData()
     }
 }
 
-extension ViewController {
+extension TemperatureViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         let count = self.fetchedResultsController.sections?.count
         return count ?? 0

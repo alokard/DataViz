@@ -1,5 +1,15 @@
 import Foundation
 
+enum DataType {
+    case unknown//(DataEntry<Any>)
+    case temperature(DataEntry<Double>)
+    case pressure(DataEntry<Double>)
+    case serial(DataEntry<String>)
+    case location(DataEntry<[Double]>)
+    case voltage(DataEntry<Double>)
+    case pm1(DataEntry<Double>)
+}
+
 class DataEntry<T> {
     let id: String
     let name: String

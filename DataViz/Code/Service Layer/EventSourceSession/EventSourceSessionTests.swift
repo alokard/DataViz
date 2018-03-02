@@ -96,6 +96,15 @@ class EventSourceSessionTests: XCTestCase {
         XCTAssertTrue(urlSession.dataTaskMock.resumeInvoked)
     }
 
+    func testNoSecondStartSessionDataTaskOnSecondStart() {
+        sut.start()
+        urlSession.dataTaskInvoked = false
+        urlSession.dataTaskMock.resumeInvoked = false
+        sut.start()
+        XCTAssertFalse(urlSession.dataTaskInvoked)
+        XCTAssertFalse(urlSession.dataTaskMock.resumeInvoked)
+    }
+
     func testClosedStateOnStop() {
         sut.start()
         sut.stop()

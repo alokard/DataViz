@@ -9,10 +9,6 @@ protocol CoreDataService: ErrorHandling {
     func performForegroundTask(_ block: @escaping (NSManagedObjectContext) -> Void)
 }
 
-protocol HasCoreData {
-    var coreDataService: CoreDataService { get }
-}
-
 final class CoreDataServiceImpl: CoreDataService {
     
     let errorSubject: PublishSubject<[Error]>? = PublishSubject()

@@ -18,7 +18,7 @@
 		445B6B07203D8B4E00B4E3BA /* DataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445B6B06203D8B4E00B4E3BA /* DataEntry.swift */; };
 		445B6B13203D8E5800B4E3BA /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445B6B12203D8E5800B4E3BA /* JSON.swift */; };
 		4466242B203B2500004331D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466242A203B2500004331D1 /* AppDelegate.swift */; };
-		4466242D203B2500004331D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466242C203B2500004331D1 /* ViewController.swift */; };
+		4466242D203B2500004331D1 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4466242C203B2500004331D1 /* TemperatureViewController.swift */; };
 		44662430203B2500004331D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4466242E203B2500004331D1 /* Main.storyboard */; };
 		44662433203B2500004331D1 /* DataViz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44662431203B2500004331D1 /* DataViz.xcdatamodeld */; };
 		44662435203B2500004331D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44662434203B2500004331D1 /* Assets.xcassets */; };
@@ -33,6 +33,15 @@
 		44662478203B6297004331D1 /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44662477203B6297004331D1 /* ErrorHandling.swift */; };
 		4471B676203DC1FB00A06087 /* DataEntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4471B675203DC1FB00A06087 /* DataEntryTests.swift */; };
 		44808D44203C129300314723 /* EventSourceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44808D43203C129300314723 /* EventSourceSession.swift */; };
+		449747A82045798800732108 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747A72045798800732108 /* HomeViewController.swift */; };
+		449747AB20457C0C00732108 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747AA20457C0C00732108 /* ViewModel.swift */; };
+		449747AD20457C9100732108 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747AC20457C9100732108 /* HomeViewModel.swift */; };
+		449747AF20459C2200732108 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747AE20459C2200732108 /* HomeTableViewCell.swift */; };
+		449747B32045A05400732108 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747B22045A05400732108 /* UIViewController+Rx.swift */; };
+		449747B52045A27B00732108 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747B42045A27B00732108 /* HomeCellViewModel.swift */; };
+		449747B72045A4E500732108 /* UITableViewCell+DataViz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747B62045A4E500732108 /* UITableViewCell+DataViz.swift */; };
+		449747B92049951D00732108 /* PersistentStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747B82049951D00732108 /* PersistentStoreService.swift */; };
+		449747BC2049B4D100732108 /* ConnectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747BB2049B4D100732108 /* ConnectionButton.swift */; };
 		44CCAA7020443BCA00408711 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCAA6F20443BCA00408711 /* ApplicationController.swift */; };
 		44CCAA7220443CC600408711 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCAA7120443CC600408711 /* NavigationRouter.swift */; };
 		44CCAA7420443E8D00408711 /* FlowsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCAA7320443E8D00408711 /* FlowsFactory.swift */; };
@@ -64,7 +73,7 @@
 		445B6B12203D8E5800B4E3BA /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		44662427203B2500004331D1 /* DataViz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataViz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4466242A203B2500004331D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4466242C203B2500004331D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4466242C203B2500004331D1 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		4466242F203B2500004331D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44662432203B2500004331D1 /* DataViz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataViz.xcdatamodel; sourceTree = "<group>"; };
 		44662434203B2500004331D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +91,15 @@
 		44662477203B6297004331D1 /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		4471B675203DC1FB00A06087 /* DataEntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryTests.swift; sourceTree = "<group>"; };
 		44808D43203C129300314723 /* EventSourceSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSourceSession.swift; sourceTree = "<group>"; };
+		449747A72045798800732108 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		449747AA20457C0C00732108 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		449747AC20457C9100732108 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		449747AE20459C2200732108 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		449747B22045A05400732108 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		449747B42045A27B00732108 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
+		449747B62045A4E500732108 /* UITableViewCell+DataViz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+DataViz.swift"; sourceTree = "<group>"; };
+		449747B82049951D00732108 /* PersistentStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStoreService.swift; sourceTree = "<group>"; };
+		449747BB2049B4D100732108 /* ConnectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionButton.swift; sourceTree = "<group>"; };
 		44CCAA6F20443BCA00408711 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		44CCAA7120443CC600408711 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		44CCAA7320443E8D00408711 /* FlowsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowsFactory.swift; sourceTree = "<group>"; };
@@ -210,7 +228,10 @@
 		4466245D203B273D004331D1 /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
-				4466242C203B2500004331D1 /* ViewController.swift */,
+				449747BA2049B4B400732108 /* Views */,
+				449747A920457C0000732108 /* Base */,
+				4466242C203B2500004331D1 /* TemperatureViewController.swift */,
+				449747B020459C2800732108 /* Home */,
 			);
 			path = "Presentation Layer";
 			sourceTree = "<group>";
@@ -233,6 +254,7 @@
 				445B6AC8203C207800B4E3BA /* EventSourceSession */,
 				4466246C203B576F004331D1 /* Configuration */,
 				44662477203B6297004331D1 /* ErrorHandling.swift */,
+				449747B82049951D00732108 /* PersistentStoreService.swift */,
 				445B6AD3203C2A2A00B4E3BA /* ErrorHandlingTests.swift */,
 			);
 			path = "Service Layer";
@@ -286,6 +308,43 @@
 				44662470203B576F004331D1 /* Configuration.swift */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		449747A920457C0000732108 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				449747B12045A04400732108 /* Rx */,
+				449747AA20457C0C00732108 /* ViewModel.swift */,
+				449747B62045A4E500732108 /* UITableViewCell+DataViz.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		449747B020459C2800732108 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				449747A72045798800732108 /* HomeViewController.swift */,
+				449747AE20459C2200732108 /* HomeTableViewCell.swift */,
+				449747AC20457C9100732108 /* HomeViewModel.swift */,
+				449747B42045A27B00732108 /* HomeCellViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		449747B12045A04400732108 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				449747B22045A05400732108 /* UIViewController+Rx.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
+		449747BA2049B4B400732108 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				449747BB2049B4D100732108 /* ConnectionButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		44CCAA6A2044266100408711 /* CoreData */ = {
@@ -534,18 +593,27 @@
 			files = (
 				44CCAA7420443E8D00408711 /* FlowsFactory.swift in Sources */,
 				445B6ACA203C20BC00B4E3BA /* URLSessionProtocol.swift in Sources */,
+				449747B92049951D00732108 /* PersistentStoreService.swift in Sources */,
+				449747BC2049B4D100732108 /* ConnectionButton.swift in Sources */,
+				449747A82045798800732108 /* HomeViewController.swift in Sources */,
 				4447F619204343F00005821A /* CoreDataService.swift in Sources */,
 				44CCAA7020443BCA00408711 /* ApplicationController.swift in Sources */,
 				44662465203B2D7B004331D1 /* Storyboard.swift in Sources */,
-				4466242D203B2500004331D1 /* ViewController.swift in Sources */,
+				449747B32045A05400732108 /* UIViewController+Rx.swift in Sources */,
+				4466242D203B2500004331D1 /* TemperatureViewController.swift in Sources */,
 				44CCAA7620443E9D00408711 /* FlowController.swift in Sources */,
 				445B6ACC203C22A900B4E3BA /* Context.swift in Sources */,
 				445B6B07203D8B4E00B4E3BA /* DataEntry.swift in Sources */,
+				449747AB20457C0C00732108 /* ViewModel.swift in Sources */,
 				44808D44203C129300314723 /* EventSourceSession.swift in Sources */,
 				44CCAA7220443CC600408711 /* NavigationRouter.swift in Sources */,
+				449747B72045A4E500732108 /* UITableViewCell+DataViz.swift in Sources */,
 				44662478203B6297004331D1 /* ErrorHandling.swift in Sources */,
+				449747B52045A27B00732108 /* HomeCellViewModel.swift in Sources */,
 				44CCAA7820443F2200408711 /* MainFlowController.swift in Sources */,
 				4466242B203B2500004331D1 /* AppDelegate.swift in Sources */,
+				449747AF20459C2200732108 /* HomeTableViewCell.swift in Sources */,
+				449747AD20457C9100732108 /* HomeViewModel.swift in Sources */,
 				44662474203B576F004331D1 /* Configuration.swift in Sources */,
 				44662467203B2DB3004331D1 /* UIViewController+Storyboard.swift in Sources */,
 				445B6B13203D8E5800B4E3BA /* JSON.swift in Sources */,

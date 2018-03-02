@@ -1,12 +1,12 @@
 import Foundation
 
-typealias FlowContext = HasConfiguration & HasErrorHandler & HasEventSourceSession & HasCoreData
+typealias FlowContext = HasConfiguration & HasErrorHandler & HasEventSourceSession & HasPersistentStore
 
 class Context: FlowContext {
     let configuration: Configuration
     let errorHandler: ErrorHandling
     let eventSource: EventSourceSession
-    let coreDataService: CoreDataService
+    let persistentStore: PersistentStoreService
 
     deinit {
         eventSource.stop()
@@ -15,11 +15,11 @@ class Context: FlowContext {
     init(configuration: Configuration,
          errorHandler: ErrorHandling,
          eventSource: EventSourceSession,
-         coreDataService: CoreDataService) {
+         persistentStore: PersistentStoreService) {
         self.configuration = configuration
         self.errorHandler = errorHandler
         self.eventSource = eventSource
-        self.coreDataService = coreDataService
+        self.persistentStore = persistentStore
     }
 }
 
