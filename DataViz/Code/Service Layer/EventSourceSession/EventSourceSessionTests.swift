@@ -3,11 +3,12 @@ import RxSwift
 @testable import DataViz
 
 class EventSourceSessionMock: EventSourceSession {
+
     var state: Observable<EventSourceSessionState> = PublishSubject.never()
-
     var error: Observable<Error> = PublishSubject.never()
-
     var data: Observable<String> = PublishSubject.never()
+
+    var inProgress: Bool = false
 
     private(set) var startInvoked = false
     func start() {

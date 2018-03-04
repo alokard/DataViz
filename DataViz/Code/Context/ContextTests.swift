@@ -9,7 +9,10 @@ class ContextMock: FlowContext {
     var configuration: Configuration { return configurationMock }
 
     let errorHandlerMock = ErrorHandlingMock()
-    var errorHandler: ErrorHandling { return errorHandlerMock }    
+    var errorHandler: ErrorHandling { return errorHandlerMock }
+
+    let persistentStoreMock = PersistentStoreServiceMock()
+    var persistentStore: PersistentStoreService { return persistentStoreMock }
 }
 
 class ContextTests: XCTestCase {
@@ -21,7 +24,8 @@ class ContextTests: XCTestCase {
         eventSource = EventSourceSessionMock()
         sut = Context(configuration: ConfigurationMock(),
                       errorHandler: ErrorHandlingMock(),
-                      eventSource: eventSource)
+                      eventSource: eventSource,
+                      persistentStore: PersistentStoreServiceMock())
     }
     
     override func tearDown() {

@@ -42,6 +42,7 @@
 		449747B72045A4E500732108 /* UITableViewCell+DataViz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747B62045A4E500732108 /* UITableViewCell+DataViz.swift */; };
 		449747B92049951D00732108 /* PersistentStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747B82049951D00732108 /* PersistentStoreService.swift */; };
 		449747BC2049B4D100732108 /* ConnectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449747BB2049B4D100732108 /* ConnectionButton.swift */; };
+		44AAAEE7204BD59F006EF9DC /* PersistentStoreServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AAAEE6204BD59F006EF9DC /* PersistentStoreServiceTests.swift */; };
 		44CCAA7020443BCA00408711 /* ApplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCAA6F20443BCA00408711 /* ApplicationController.swift */; };
 		44CCAA7220443CC600408711 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCAA7120443CC600408711 /* NavigationRouter.swift */; };
 		44CCAA7420443E8D00408711 /* FlowsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CCAA7320443E8D00408711 /* FlowsFactory.swift */; };
@@ -100,6 +101,7 @@
 		449747B62045A4E500732108 /* UITableViewCell+DataViz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+DataViz.swift"; sourceTree = "<group>"; };
 		449747B82049951D00732108 /* PersistentStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStoreService.swift; sourceTree = "<group>"; };
 		449747BB2049B4D100732108 /* ConnectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionButton.swift; sourceTree = "<group>"; };
+		44AAAEE6204BD59F006EF9DC /* PersistentStoreServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentStoreServiceTests.swift; sourceTree = "<group>"; };
 		44CCAA6F20443BCA00408711 /* ApplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationController.swift; sourceTree = "<group>"; };
 		44CCAA7120443CC600408711 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
 		44CCAA7320443E8D00408711 /* FlowsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowsFactory.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				4466246C203B576F004331D1 /* Configuration */,
 				44662477203B6297004331D1 /* ErrorHandling.swift */,
 				449747B82049951D00732108 /* PersistentStoreService.swift */,
+				44AAAEE6204BD59F006EF9DC /* PersistentStoreServiceTests.swift */,
 				445B6AD3203C2A2A00B4E3BA /* ErrorHandlingTests.swift */,
 			);
 			path = "Service Layer";
@@ -627,6 +630,7 @@
 			files = (
 				445B6AD4203C2A2A00B4E3BA /* ErrorHandlingTests.swift in Sources */,
 				445B6AD2203C28F200B4E3BA /* URLSessionMock.swift in Sources */,
+				44AAAEE7204BD59F006EF9DC /* PersistentStoreServiceTests.swift in Sources */,
 				4471B676203DC1FB00A06087 /* DataEntryTests.swift in Sources */,
 				44662475203B60C0004331D1 /* ConfigurationMock.swift in Sources */,
 				44662476203B60C8004331D1 /* ConfigurationTests.swift in Sources */,
