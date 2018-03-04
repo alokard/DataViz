@@ -30,8 +30,15 @@ class HomeViewModelImpl: HomeViewModel {
     required init(context: Context, input: HomeViewModel.Input, data: Void?, handlers: HandlersContainer) {
         self.context = context
         self.handlers = handlers
-        let tmpSection = AnimatableSectionModel(model: "", items: [HomeCellViewModel(identity: "Temperature"), HomeCellViewModel(identity: "Presure")])
-        measurements = Driver.just([tmpSection])
+        let items = Driver.combineLatest([
+                context.persistentStore.temperatureMeasurements.map { _ in return HomeCellViewModel(identity: "Temperature") },
+                context.persistentStore.pressureMeasurements.map { _ in return HomeCellViewModel(identity: "Pressure") },
+                context.persistentStore.voltageMeasurements.map { _ in return HomeCellViewModel(identity: "Voltage") },
+                context.persistentStore.pm1Measurements.map { _ in return HomeCellViewModel(identity: "PM1") },
+                context.persistentStore.serialMeasurements.map { _ in return HomeCellViewModel(identity: "Serial") },
+                context.persistentStore.locationMeasurements.map { _ in return HomeCellViewModel(identity: "Location") },
+            ])
+        measurements = items.map { [AnimatableSectionModel(model: "", items: $0)] }
 
         startButtonState = context.eventSource.state.map { state in
             switch state {

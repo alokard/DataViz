@@ -30,11 +30,11 @@
         <attribute name="value" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Temperature" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Location" positionX="0" positionY="45" width="128" height="90"/>
+        <element name="PM1" positionX="-36" positionY="27" width="128" height="90"/>
         <element name="Pressure" positionX="-63" positionY="9" width="128" height="90"/>
         <element name="Serial" positionX="-54" positionY="18" width="128" height="75"/>
-        <element name="PM1" positionX="-36" positionY="27" width="128" height="90"/>
+        <element name="Temperature" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="Voltage" positionX="-18" positionY="36" width="128" height="90"/>
-        <element name="Location" positionX="0" positionY="45" width="128" height="90"/>
     </elements>
 </model>

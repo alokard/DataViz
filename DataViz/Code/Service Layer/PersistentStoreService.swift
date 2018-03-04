@@ -1,5 +1,6 @@
 import Foundation
 import RxSwift
+import RxCocoa
 import CoreData
 
 protocol PersistentStoreService {
@@ -23,6 +24,143 @@ extension PersistentStoreService {
                                                                    cacheName: nil)
 
         return aFetchedResultsController as! NSFetchedResultsController<T>
+    }
+}
+
+extension PersistentStoreService {
+    var temperatureMeasurements: Driver<DataEntry<Double>?> {
+        let fetchRequest: NSFetchRequest<Temperature> = Temperature.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var startValue: DataEntry<Double>?
+        if let result = (try? viewContext.fetch(fetchRequest))?.first,
+            let date = result.measurementDate {
+            let measurement: [(Date, Double)] = [(date, result.value)]
+            startValue = DataEntry<Double>(name: "Temperature", measurements: measurement, unit: result.unit)
+        }
+
+        return lastMeasurements
+            .map { data -> DataEntry<Double>? in
+                switch data {
+                case .temperature(let value): return value
+                default: return nil
+                }
+            }
+            .filter { $0 != nil }
+            .asDriver(onErrorJustReturn: nil)
+            .startWith(startValue)
+    }
+    var pressureMeasurements: Driver<DataEntry<Double>?> {
+        let fetchRequest: NSFetchRequest<Pressure> = Pressure.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var startValue: DataEntry<Double>?
+        if let result = (try? viewContext.fetch(fetchRequest))?.first,
+            let date = result.measurementDate {
+            let measurement: [(Date, Double)] = [(date, result.value)]
+            startValue = DataEntry<Double>(name: "Pressure", measurements: measurement, unit: result.unit)
+        }
+        return lastMeasurements
+            .map { data -> DataEntry<Double>? in
+                switch data {
+                case .pressure(let value): return value
+                default: return nil
+                }
+            }
+            .filter { $0 != nil }
+            .asDriver(onErrorJustReturn: nil)
+            .startWith(startValue)
+    }
+    var serialMeasurements: Driver<DataEntry<String>?> {
+        let fetchRequest: NSFetchRequest<Serial> = Serial.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var startValue: DataEntry<String>?
+        if let result = (try? viewContext.fetch(fetchRequest))?.first,
+            let date = result.measurementDate,
+            let value = result.value {
+            let measurement: [(Date, String)] = [(date, value)]
+            startValue = DataEntry<String>(name: "Serial", measurements: measurement)
+        }
+        return lastMeasurements
+            .map { data -> DataEntry<String>? in
+                switch data {
+                case .serial(let value): return value
+                default: return nil
+                }
+            }
+            .filter { $0 != nil }
+            .asDriver(onErrorJustReturn: nil)
+            .startWith(startValue)
+    }
+    var locationMeasurements: Driver<DataEntry<[Double]>?> {
+        let fetchRequest: NSFetchRequest<Location> = Location.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var startValue: DataEntry<[Double]>?
+        if let result = (try? viewContext.fetch(fetchRequest))?.first,
+            let date = result.measurementDate {
+            let measurement: [(Date, [Double])] = [(date, [result.latitude, result.longitude])]
+            startValue = DataEntry<[Double]>(name: "Location", measurements: measurement)
+        }
+        return lastMeasurements
+            .map { data -> DataEntry<[Double]>? in
+                switch data {
+                case .location(let value): return value
+                default: return nil
+                }
+            }
+            .filter { $0 != nil }
+            .asDriver(onErrorJustReturn: nil)
+            .startWith(startValue)
+    }
+    var voltageMeasurements: Driver<DataEntry<Double>?> {
+        let fetchRequest: NSFetchRequest<Voltage> = Voltage.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var startValue: DataEntry<Double>?
+        if let result = (try? viewContext.fetch(fetchRequest))?.first,
+            let date = result.measurementDate {
+            let measurement: [(Date, Double)] = [(date, result.value)]
+            startValue = DataEntry<Double>(name: "Voltage", measurements: measurement, unit: result.unit)
+        }
+        return lastMeasurements
+            .map { data -> DataEntry<Double>? in
+                switch data {
+                case .voltage(let value): return value
+                default: return nil
+                }
+            }
+            .filter { $0 != nil }
+            .asDriver(onErrorJustReturn: nil)
+            .startWith(startValue)
+    }
+    var pm1Measurements: Driver<DataEntry<Double>?> {
+        let fetchRequest: NSFetchRequest<PM1> = PM1.fetchRequest()
+        fetchRequest.fetchLimit = 1
+        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var startValue: DataEntry<Double>?
+        if let result = (try? viewContext.fetch(fetchRequest))?.first,
+            let date = result.measurementDate {
+            let measurement: [(Date, Double)] = [(date, result.value)]
+            startValue = DataEntry<Double>(name: "PM1", measurements: measurement, unit: result.unit)
+        }
+        return lastMeasurements
+            .map { data -> DataEntry<Double>? in
+                switch data {
+                case .pm1(let value): return value
+                default: return nil
+                }
+            }
+            .filter { $0 != nil }
+            .asDriver(onErrorJustReturn: nil)
+            .startWith(startValue)
     }
 }
 
@@ -93,7 +231,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                     for measurement in measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: Const.temperatureEntity, into: context) as! Temperature
 
-                        object.measurementDate = Date(timeIntervalSince1970: measurement.0)
+                        object.measurementDate = measurement.0
                         object.value = measurement.1
                         object.unit = entry.unit
                     }
@@ -102,7 +240,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                     for measurement in measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: Const.pressureEntity, into: context) as! Pressure
 
-                        object.measurementDate = Date(timeIntervalSince1970: measurement.0)
+                        object.measurementDate = measurement.0
                         object.value = measurement.1
                         object.unit = entry.unit
                     }
@@ -111,7 +249,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                     for measurement in measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: Const.voltageEntity, into: context) as! Voltage
 
-                        object.measurementDate = Date(timeIntervalSince1970: measurement.0)
+                        object.measurementDate = measurement.0
                         object.value = measurement.1
                         object.unit = entry.unit
                     }
@@ -120,7 +258,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                     for measurement in measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: Const.pm1Entity, into: context) as! PM1
 
-                        object.measurementDate = Date(timeIntervalSince1970: measurement.0)
+                        object.measurementDate = measurement.0
                         object.value = measurement.1
                         object.unit = entry.unit
                     }
@@ -129,7 +267,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                     for measurement in measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: Const.serialEntity, into: context) as! Serial
 
-                        object.measurementDate = Date(timeIntervalSince1970: measurement.0)
+                        object.measurementDate = measurement.0
                         object.value = measurement.1
                     }
                 case .location(let entry):
@@ -137,7 +275,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                     for measurement in measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: Const.serialEntity, into: context) as! Location
 
-                        object.measurementDate = Date(timeIntervalSince1970: measurement.0)
+                        object.measurementDate = measurement.0
                         object.latitude = measurement.1.first ?? 0
                         object.longitude = measurement.1.last ?? 0
                     }

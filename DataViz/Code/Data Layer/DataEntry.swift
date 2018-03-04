@@ -11,25 +11,29 @@ enum DataType {
 }
 
 class DataEntry<T> {
-    let id: String
     let name: String
     let unit: String?
-    let measurements: [(TimeInterval, T)]?
+    let measurements: [(Date, T)]?
+
+    init(name: String, measurements: [(Date, T)] = [], unit: String? = nil) {
+        self.name = name
+        self.measurements = measurements
+        self.unit = unit
+    }
 
     init(json: JSON) throws {
         name = try json.parse("name")
-        id = try json.parse("_id")
         unit = json.parse("unit")
         guard let measurements: [Any] = json.parse("measurements") else {
             self.measurements = nil
             return
         }
-        var measurementTouples = [(TimeInterval, T)]()
+        var measurementTouples = [(Date, T)]()
         for measurement in measurements {
             if let measurement = measurement as? [Any] {
                 guard measurement.count > 1 else { continue }
                 if let timestamp = measurement[0] as? TimeInterval, let value = measurement[1] as? T {
-                    measurementTouples.append((timestamp, value))
+                    measurementTouples.append((Date(timeIntervalSince1970: timestamp), value))
                 }
             }
         }
