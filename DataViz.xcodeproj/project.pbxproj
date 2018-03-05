@@ -230,10 +230,10 @@
 		4466245D203B273D004331D1 /* Presentation Layer */ = {
 			isa = PBXGroup;
 			children = (
-				449747BA2049B4B400732108 /* Views */,
 				449747A920457C0000732108 /* Base */,
-				4466242C203B2500004331D1 /* TemperatureViewController.swift */,
 				449747B020459C2800732108 /* Home */,
+				4466242C203B2500004331D1 /* TemperatureViewController.swift */,
+				449747BA2049B4B400732108 /* Views */,
 			);
 			path = "Presentation Layer";
 			sourceTree = "<group>";
@@ -252,13 +252,11 @@
 		4466245F203B273D004331D1 /* Service Layer */ = {
 			isa = PBXGroup;
 			children = (
-				4447F617204343D90005821A /* CoreDataService */,
-				445B6AC8203C207800B4E3BA /* EventSourceSession */,
 				4466246C203B576F004331D1 /* Configuration */,
-				44662477203B6297004331D1 /* ErrorHandling.swift */,
-				449747B82049951D00732108 /* PersistentStoreService.swift */,
-				44AAAEE6204BD59F006EF9DC /* PersistentStoreServiceTests.swift */,
-				445B6AD3203C2A2A00B4E3BA /* ErrorHandlingTests.swift */,
+				4447F617204343D90005821A /* CoreDataService */,
+				44AAAEE9204CC37A006EF9DC /* ErrorHandling */,
+				445B6AC8203C207800B4E3BA /* EventSourceSession */,
+				44AAAEE8204CC367006EF9DC /* PersistentStore */,
 			);
 			path = "Service Layer";
 			sourceTree = "<group>";
@@ -266,7 +264,6 @@
 		44662460203B273D004331D1 /* Data Layer */ = {
 			isa = PBXGroup;
 			children = (
-				44CCAA6A2044266100408711 /* CoreData */,
 				445B6B12203D8E5800B4E3BA /* JSON.swift */,
 				445B6B06203D8B4E00B4E3BA /* DataEntry.swift */,
 				4471B675203DC1FB00A06087 /* DataEntryTests.swift */,
@@ -327,9 +324,9 @@
 			isa = PBXGroup;
 			children = (
 				449747A72045798800732108 /* HomeViewController.swift */,
-				449747AE20459C2200732108 /* HomeTableViewCell.swift */,
 				449747AC20457C9100732108 /* HomeViewModel.swift */,
 				449747B42045A27B00732108 /* HomeCellViewModel.swift */,
+				449747AE20459C2200732108 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -350,11 +347,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		44CCAA6A2044266100408711 /* CoreData */ = {
+		44AAAEE8204CC367006EF9DC /* PersistentStore */ = {
 			isa = PBXGroup;
 			children = (
+				449747B82049951D00732108 /* PersistentStoreService.swift */,
+				44AAAEE6204BD59F006EF9DC /* PersistentStoreServiceTests.swift */,
 			);
-			path = CoreData;
+			path = PersistentStore;
+			sourceTree = "<group>";
+		};
+		44AAAEE9204CC37A006EF9DC /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				44662477203B6297004331D1 /* ErrorHandling.swift */,
+				445B6AD3203C2A2A00B4E3BA /* ErrorHandlingTests.swift */,
+			);
+			path = ErrorHandling;
 			sourceTree = "<group>";
 		};
 		FF14CBBE991DEBA81EA71B73 /* Frameworks */ = {
