@@ -3,6 +3,17 @@ import RxSwift
 import RxCocoa
 import CoreData
 
+struct PersistentStoreConst {
+    static let temperatureEntity = "Temperature"
+    static let pressureEntity = "Pressure"
+    static let serialEntity = "Serial"
+    static let locationEntity = "Location"
+    static let voltageEntity = "Voltage"
+    static let pm1Entity = "PM1"
+
+    static let measurementDate = "measurementDate"
+}
+
 protocol PersistentStoreService {
     var viewContext: NSManagedObjectContext { get }
     func fetchedResultsController<T: NSManagedObject>() -> NSFetchedResultsController<T>
@@ -15,7 +26,7 @@ extension PersistentStoreService {
         let fetchRequest = T.fetchRequest()
         fetchRequest.fetchBatchSize = 20
 
-        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: PersistentStoreConst.measurementDate, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
 
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -28,16 +39,17 @@ extension PersistentStoreService {
 }
 
 extension PersistentStoreService {
-    var temperatureMeasurements: Driver<DataEntry<Double>?> {
+    var temperatureMeasurements: Driver<DataType?> {
         let fetchRequest: NSFetchRequest<Temperature> = Temperature.fetchRequest()
         fetchRequest.fetchLimit = 1
-        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: PersistentStoreConst.measurementDate, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        var startValue: DataEntry<Double>?
+        var startValue: DataType?
         if let result = (try? viewContext.fetch(fetchRequest))?.first,
             let date = result.measurementDate {
             let measurement: [(Date, Double)] = [(date, result.value)]
-            startValue = DataEntry<Double>(name: "Temperature", measurements: measurement, unit: result.unit)
+            let entry = DataEntry<Double>(name: PersistentStoreConst.temperatureEntity, measurements: measurement, unit: result.unit)
+            startValue = DataType.dataType(from: entry)
         }
 
         return lastMeasurements
@@ -48,19 +60,22 @@ extension PersistentStoreService {
                 }
             }
             .filter { $0 != nil }
+            .map { $0! }
+            .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
     }
-    var pressureMeasurements: Driver<DataEntry<Double>?> {
+    var pressureMeasurements: Driver<DataType?> {
         let fetchRequest: NSFetchRequest<Pressure> = Pressure.fetchRequest()
         fetchRequest.fetchLimit = 1
-        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: PersistentStoreConst.measurementDate, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        var startValue: DataEntry<Double>?
+        var startValue: DataType?
         if let result = (try? viewContext.fetch(fetchRequest))?.first,
             let date = result.measurementDate {
             let measurement: [(Date, Double)] = [(date, result.value)]
-            startValue = DataEntry<Double>(name: "Pressure", measurements: measurement, unit: result.unit)
+            let entry = DataEntry<Double>(name: PersistentStoreConst.pressureEntity, measurements: measurement, unit: result.unit)
+            startValue = DataType.dataType(from: entry)
         }
         return lastMeasurements
             .map { data -> DataEntry<Double>? in
@@ -70,20 +85,23 @@ extension PersistentStoreService {
                 }
             }
             .filter { $0 != nil }
+            .map { $0! }
+            .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
     }
-    var serialMeasurements: Driver<DataEntry<String>?> {
+    var serialMeasurements: Driver<DataType?> {
         let fetchRequest: NSFetchRequest<Serial> = Serial.fetchRequest()
         fetchRequest.fetchLimit = 1
-        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: PersistentStoreConst.measurementDate, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        var startValue: DataEntry<String>?
+        var startValue: DataType?
         if let result = (try? viewContext.fetch(fetchRequest))?.first,
             let date = result.measurementDate,
             let value = result.value {
             let measurement: [(Date, String)] = [(date, value)]
-            startValue = DataEntry<String>(name: "Serial", measurements: measurement)
+            let entry = DataEntry<String>(name: PersistentStoreConst.serialEntity, measurements: measurement)
+            startValue = DataType.dataType(from: entry)
         }
         return lastMeasurements
             .map { data -> DataEntry<String>? in
@@ -93,19 +111,22 @@ extension PersistentStoreService {
                 }
             }
             .filter { $0 != nil }
+            .map { $0! }
+            .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
     }
-    var locationMeasurements: Driver<DataEntry<[Double]>?> {
+    var locationMeasurements: Driver<DataType?> {
         let fetchRequest: NSFetchRequest<Location> = Location.fetchRequest()
         fetchRequest.fetchLimit = 1
-        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: PersistentStoreConst.measurementDate, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        var startValue: DataEntry<[Double]>?
+        var startValue: DataType?
         if let result = (try? viewContext.fetch(fetchRequest))?.first,
             let date = result.measurementDate {
             let measurement: [(Date, [Double])] = [(date, [result.latitude, result.longitude])]
-            startValue = DataEntry<[Double]>(name: "Location", measurements: measurement)
+            let entry = DataEntry<[Double]>(name: PersistentStoreConst.locationEntity, measurements: measurement)
+            startValue = DataType.dataType(from: entry)
         }
         return lastMeasurements
             .map { data -> DataEntry<[Double]>? in
@@ -115,19 +136,22 @@ extension PersistentStoreService {
                 }
             }
             .filter { $0 != nil }
+            .map { $0! }
+            .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
     }
-    var voltageMeasurements: Driver<DataEntry<Double>?> {
+    var voltageMeasurements: Driver<DataType?> {
         let fetchRequest: NSFetchRequest<Voltage> = Voltage.fetchRequest()
         fetchRequest.fetchLimit = 1
-        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: PersistentStoreConst.measurementDate, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        var startValue: DataEntry<Double>?
+        var startValue: DataType?
         if let result = (try? viewContext.fetch(fetchRequest))?.first,
             let date = result.measurementDate {
             let measurement: [(Date, Double)] = [(date, result.value)]
-            startValue = DataEntry<Double>(name: "Voltage", measurements: measurement, unit: result.unit)
+            let entry = DataEntry<Double>(name: PersistentStoreConst.voltageEntity, measurements: measurement, unit: result.unit)
+            startValue = DataType.dataType(from: entry)
         }
         return lastMeasurements
             .map { data -> DataEntry<Double>? in
@@ -137,19 +161,22 @@ extension PersistentStoreService {
                 }
             }
             .filter { $0 != nil }
+            .map { $0! }
+            .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
     }
-    var pm1Measurements: Driver<DataEntry<Double>?> {
+    var pm1Measurements: Driver<DataType?> {
         let fetchRequest: NSFetchRequest<PM1> = PM1.fetchRequest()
         fetchRequest.fetchLimit = 1
-        let sortDescriptor = NSSortDescriptor(key: "measurementDate", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: PersistentStoreConst.measurementDate, ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        var startValue: DataEntry<Double>?
+        var startValue: DataType?
         if let result = (try? viewContext.fetch(fetchRequest))?.first,
             let date = result.measurementDate {
             let measurement: [(Date, Double)] = [(date, result.value)]
-            startValue = DataEntry<Double>(name: "PM1", measurements: measurement, unit: result.unit)
+            let entry = DataEntry<Double>(name: PersistentStoreConst.pm1Entity, measurements: measurement, unit: result.unit)
+            startValue = DataType.dataType(from: entry)
         }
         return lastMeasurements
             .map { data -> DataEntry<Double>? in
@@ -159,6 +186,8 @@ extension PersistentStoreService {
                 }
             }
             .filter { $0 != nil }
+            .map { $0! }
+            .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
     }
@@ -169,15 +198,6 @@ protocol HasPersistentStore {
 }
 
 class PersistentStoreServiceImpl: PersistentStoreService {
-    private struct Const {
-        static let temperatureEntity = "Temperature"
-        static let pressureEntity = "Pressure"
-        static let serialEntity = "Serial"
-        static let locationEntity = "Location"
-        static let voltageEntity = "Voltage"
-        static let pm1Entity = "PM1"
-    }
-
     let lastMeasurements: Observable<DataType>
     var viewContext: NSManagedObjectContext { return coreDataService.viewContext }
 
@@ -193,26 +213,11 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 guard let jsons = (try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [JSON] else { return result }
                 for json in jsons {
                     if let doubleEntry = try? DataEntry<Double>(json: json) {
-                        switch doubleEntry.name {
-                        case Const.temperatureEntity:
-                            result.append(.temperature(doubleEntry))
-                        case Const.pressureEntity:
-                            result.append(.pressure(doubleEntry))
-                        case Const.pm1Entity:
-                            result.append(.pm1(doubleEntry))
-                        case Const.voltageEntity:
-                            result.append(.voltage(doubleEntry))
-                        default:
-                            break
-                        }
+                        result.append(DataType.dataType(from: doubleEntry))
                     } else if let serial = try? DataEntry<String>(json: json) {
-                        if serial.name == Const.serialEntity {
-                            result.append(.serial(serial))
-                        }
+                        result.append(DataType.dataType(from: serial))
                     } else if let location = try? DataEntry<[Double]>(json: json) {
-                        if location.name == Const.locationEntity {
-                            result.append(.location(location))
-                        }
+                        result.append(DataType.dataType(from: location))
                     }
                 }
                 return result
@@ -229,7 +234,8 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 case .temperature(let entry):
                     guard let measurements = entry.measurements else { break }
                     for measurement in measurements {
-                        let object = NSEntityDescription.insertNewObject(forEntityName: Const.temperatureEntity, into: context) as! Temperature
+                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.temperatureEntity,
+                                                                         into: context) as! Temperature
 
                         object.measurementDate = measurement.0
                         object.value = measurement.1
@@ -238,7 +244,8 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 case .pressure(let entry):
                     guard let measurements = entry.measurements else { break }
                     for measurement in measurements {
-                        let object = NSEntityDescription.insertNewObject(forEntityName: Const.pressureEntity, into: context) as! Pressure
+                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.pressureEntity,
+                                                                         into: context) as! Pressure
 
                         object.measurementDate = measurement.0
                         object.value = measurement.1
@@ -247,7 +254,8 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 case .voltage(let entry):
                     guard let measurements = entry.measurements else { break }
                     for measurement in measurements {
-                        let object = NSEntityDescription.insertNewObject(forEntityName: Const.voltageEntity, into: context) as! Voltage
+                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.voltageEntity,
+                                                                         into: context) as! Voltage
 
                         object.measurementDate = measurement.0
                         object.value = measurement.1
@@ -256,7 +264,8 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 case .pm1(let entry):
                     guard let measurements = entry.measurements else { break }
                     for measurement in measurements {
-                        let object = NSEntityDescription.insertNewObject(forEntityName: Const.pm1Entity, into: context) as! PM1
+                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.pm1Entity,
+                                                                         into: context) as! PM1
 
                         object.measurementDate = measurement.0
                         object.value = measurement.1
@@ -265,7 +274,8 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 case .serial(let entry):
                     guard let measurements = entry.measurements else { break }
                     for measurement in measurements {
-                        let object = NSEntityDescription.insertNewObject(forEntityName: Const.serialEntity, into: context) as! Serial
+                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.serialEntity,
+                                                                         into: context) as! Serial
 
                         object.measurementDate = measurement.0
                         object.value = measurement.1
@@ -273,7 +283,8 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 case .location(let entry):
                     guard let measurements = entry.measurements else { break }
                     for measurement in measurements {
-                        let object = NSEntityDescription.insertNewObject(forEntityName: Const.serialEntity, into: context) as! Location
+                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.serialEntity,
+                                                                         into: context) as! Location
 
                         object.measurementDate = measurement.0
                         object.latitude = measurement.1.first ?? 0

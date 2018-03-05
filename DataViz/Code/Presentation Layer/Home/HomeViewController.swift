@@ -10,7 +10,9 @@ class HomeViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
     private let dataSource = RxTableViewSectionedAnimatedDataSource<AnimatableSectionModel<String, HomeCellViewModel>>(configureCell: { dataSource, tableView, indexPath, item in
-        return HomeTableViewCell.dequeueFrom(tableView: tableView, for: indexPath)
+        let cell = HomeTableViewCell.dequeueFrom(tableView: tableView, for: indexPath)
+        cell.viewModel = item
+        return cell
     })
 
 

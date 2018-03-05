@@ -1,13 +1,43 @@
 import Foundation
 
 enum DataType {
-    case unknown//(DataEntry<Any>)
+    case unknown
     case temperature(DataEntry<Double>)
     case pressure(DataEntry<Double>)
     case serial(DataEntry<String>)
     case location(DataEntry<[Double]>)
     case voltage(DataEntry<Double>)
     case pm1(DataEntry<Double>)
+
+    static func dataType(from doubleEntry: DataEntry<Double>) -> DataType {
+        switch doubleEntry.name {
+        case PersistentStoreConst.temperatureEntity:
+            return .temperature(doubleEntry)
+        case PersistentStoreConst.pressureEntity:
+            return .pressure(doubleEntry)
+        case PersistentStoreConst.pm1Entity:
+            return .pm1(doubleEntry)
+        case PersistentStoreConst.voltageEntity:
+            return .voltage(doubleEntry)
+        default:
+            return .unknown
+        }
+    }
+
+    static func dataType(from serial: DataEntry<String>) -> DataType {
+        if serial.name == PersistentStoreConst.serialEntity {
+            return .serial(serial)
+        }
+        return .unknown
+    }
+
+    static func dataType(from location: DataEntry<[Double]>) -> DataType {
+        if location.name == PersistentStoreConst.locationEntity {
+            return .location(location)
+        }
+        return .unknown
+    }
+
 }
 
 class DataEntry<T> {

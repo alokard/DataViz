@@ -31,14 +31,17 @@ class HomeViewModelImpl: HomeViewModel {
         self.context = context
         self.handlers = handlers
         let items = Driver.combineLatest([
-                context.persistentStore.temperatureMeasurements.map { _ in return HomeCellViewModel(identity: "Temperature") },
-                context.persistentStore.pressureMeasurements.map { _ in return HomeCellViewModel(identity: "Pressure") },
-                context.persistentStore.voltageMeasurements.map { _ in return HomeCellViewModel(identity: "Voltage") },
-                context.persistentStore.pm1Measurements.map { _ in return HomeCellViewModel(identity: "PM1") },
-                context.persistentStore.serialMeasurements.map { _ in return HomeCellViewModel(identity: "Serial") },
-                context.persistentStore.locationMeasurements.map { _ in return HomeCellViewModel(identity: "Location") },
-            ])
-        measurements = items.map { [AnimatableSectionModel(model: "", items: $0)] }
+                context.persistentStore.temperatureMeasurements,
+                context.persistentStore.pressureMeasurements,
+                context.persistentStore.voltageMeasurements,
+                context.persistentStore.pm1Measurements,
+                context.persistentStore.serialMeasurements,
+                context.persistentStore.locationMeasurements
+            ]) { $0.filter { $0 != nil }
+                    .map { $0! }
+                    .map { HomeCellViewModel(dataType: $0) }
+        }
+        measurements = items.throttle(1.5).map { [AnimatableSectionModel(model: "", items: $0)] }
 
         startButtonState = context.eventSource.state.map { state in
             switch state {
