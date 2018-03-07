@@ -17,7 +17,7 @@ enum DataType {
             return .pressure(doubleEntry)
         case PersistentStoreConst.pm1Entity:
             return .pm1(doubleEntry)
-        case PersistentStoreConst.voltageEntity:
+        case "Batt. Voltage":
             return .voltage(doubleEntry)
         default:
             return .unknown
@@ -37,13 +37,16 @@ enum DataType {
         }
         return .unknown
     }
+}
 
+enum DataEntryError: Error {
+    case parsingError
 }
 
 class DataEntry<T> {
     let name: String
     let unit: String?
-    let measurements: [(Date, T)]?
+    let measurements: [(Date, T)]
 
     init(name: String, measurements: [(Date, T)] = [], unit: String? = nil) {
         self.name = name
@@ -55,8 +58,7 @@ class DataEntry<T> {
         name = try json.parse("name")
         unit = json.parse("unit")
         guard let measurements: [Any] = json.parse("measurements") else {
-            self.measurements = nil
-            return
+            throw DataEntryError.parsingError
         }
         var measurementTouples = [(Date, T)]()
         for measurement in measurements {
@@ -64,6 +66,8 @@ class DataEntry<T> {
                 guard measurement.count > 1 else { continue }
                 if let timestamp = measurement[0] as? TimeInterval, let value = measurement[1] as? T {
                     measurementTouples.append((Date(timeIntervalSince1970: timestamp), value))
+                } else {
+                    throw DataEntryError.parsingError
                 }
             }
         }

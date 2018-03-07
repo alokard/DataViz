@@ -41,7 +41,7 @@ class HomeCellViewModel: Equatable, IdentifiableType {
     private func setup(with entry: DataEntry<Double>) {
         identity = entry.name
         units = entry.unit
-        if let measurement = entry.measurements?.first {
+        if let measurement = entry.measurements.first {
             value = String(format: "%.2f", measurement.1)
             date = HomeCellViewModel.dateTimeFormatter.string(from: measurement.0)
         }
@@ -50,7 +50,7 @@ class HomeCellViewModel: Equatable, IdentifiableType {
     private func setup(with entry: DataEntry<String>) {
         identity = entry.name
         units = entry.unit
-        if let measurement = entry.measurements?.first {
+        if let measurement = entry.measurements.first {
             value = measurement.1
             date = HomeCellViewModel.dateTimeFormatter.string(from: measurement.0)
         }
@@ -59,10 +59,10 @@ class HomeCellViewModel: Equatable, IdentifiableType {
     private func setup(with entry: DataEntry<[Double]>) {
         identity = entry.name
         units = entry.unit
-        if let measurement = entry.measurements?.first {
+        if let measurement = entry.measurements.first {
             if let latitude = measurement.1.first,
                 let longitude = measurement.1.last {
-                value = "\(latitude)\n\(longitude)"
+                value = "\(String(format: "%.4f", latitude))\n\(String(format: "%.4f", longitude))"
             }
             date = HomeCellViewModel.dateTimeFormatter.string(from: measurement.0)
         }
@@ -76,6 +76,16 @@ class HomeCellViewModel: Equatable, IdentifiableType {
     }()
 
     static func ==(lhs: HomeCellViewModel, rhs: HomeCellViewModel) -> Bool {
-        return lhs.identity == rhs.identity
+        if let lUnits = lhs.units, let rUnits = rhs.units {
+            return lhs.identity == rhs.identity
+                && lhs.value == rhs.value
+                && lhs.date == rhs.date
+                && lUnits == rUnits
+        } else if lhs.units == nil && rhs.units == nil {
+            return lhs.identity == rhs.identity
+                && lhs.value == rhs.value
+                && lhs.date == rhs.date
+        }
+        return false
     }
 }

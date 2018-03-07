@@ -39,7 +39,9 @@ class HomeViewModelImpl: HomeViewModel {
                 context.persistentStore.locationMeasurements
             ]) { $0.filter { $0 != nil }
                     .map { $0! }
-                    .map { HomeCellViewModel(dataType: $0) }
+                    .map {
+                        return HomeCellViewModel(dataType: $0)
+                }
         }
         measurements = items.throttle(1.5).map { [AnimatableSectionModel(model: "", items: $0)] }
 

@@ -61,6 +61,7 @@ extension PersistentStoreService {
             }
             .filter { $0 != nil }
             .map { $0! }
+            .filter { !$0.measurements.isEmpty }
             .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
@@ -86,6 +87,7 @@ extension PersistentStoreService {
             }
             .filter { $0 != nil }
             .map { $0! }
+            .filter { !$0.measurements.isEmpty }
             .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
@@ -112,6 +114,7 @@ extension PersistentStoreService {
             }
             .filter { $0 != nil }
             .map { $0! }
+            .filter { !$0.measurements.isEmpty }
             .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
@@ -137,6 +140,7 @@ extension PersistentStoreService {
             }
             .filter { $0 != nil }
             .map { $0! }
+            .filter { !$0.measurements.isEmpty }
             .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
@@ -150,7 +154,7 @@ extension PersistentStoreService {
         if let result = (try? viewContext.fetch(fetchRequest))?.first,
             let date = result.measurementDate {
             let measurement: [(Date, Double)] = [(date, result.value)]
-            let entry = DataEntry<Double>(name: PersistentStoreConst.voltageEntity, measurements: measurement, unit: result.unit)
+            let entry = DataEntry<Double>(name: "Batt. Voltage", measurements: measurement, unit: result.unit)
             startValue = DataType.dataType(from: entry)
         }
         return lastMeasurements
@@ -162,6 +166,7 @@ extension PersistentStoreService {
             }
             .filter { $0 != nil }
             .map { $0! }
+            .filter { !$0.measurements.isEmpty }
             .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
@@ -187,6 +192,7 @@ extension PersistentStoreService {
             }
             .filter { $0 != nil }
             .map { $0! }
+            .filter { !$0.measurements.isEmpty }
             .map { DataType.dataType(from: $0) }
             .asDriver(onErrorJustReturn: nil)
             .startWith(startValue)
@@ -232,8 +238,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                 switch dataType {
                 case .unknown: break
                 case .temperature(let entry):
-                    guard let measurements = entry.measurements else { break }
-                    for measurement in measurements {
+                    for measurement in entry.measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.temperatureEntity,
                                                                          into: context) as! Temperature
 
@@ -242,8 +247,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                         object.unit = entry.unit
                     }
                 case .pressure(let entry):
-                    guard let measurements = entry.measurements else { break }
-                    for measurement in measurements {
+                    for measurement in entry.measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.pressureEntity,
                                                                          into: context) as! Pressure
 
@@ -252,8 +256,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                         object.unit = entry.unit
                     }
                 case .voltage(let entry):
-                    guard let measurements = entry.measurements else { break }
-                    for measurement in measurements {
+                    for measurement in entry.measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.voltageEntity,
                                                                          into: context) as! Voltage
 
@@ -262,8 +265,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                         object.unit = entry.unit
                     }
                 case .pm1(let entry):
-                    guard let measurements = entry.measurements else { break }
-                    for measurement in measurements {
+                    for measurement in entry.measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.pm1Entity,
                                                                          into: context) as! PM1
 
@@ -272,8 +274,7 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                         object.unit = entry.unit
                     }
                 case .serial(let entry):
-                    guard let measurements = entry.measurements else { break }
-                    for measurement in measurements {
+                    for measurement in entry.measurements {
                         let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.serialEntity,
                                                                          into: context) as! Serial
 
@@ -281,9 +282,8 @@ class PersistentStoreServiceImpl: PersistentStoreService {
                         object.value = measurement.1
                     }
                 case .location(let entry):
-                    guard let measurements = entry.measurements else { break }
-                    for measurement in measurements {
-                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.serialEntity,
+                    for measurement in entry.measurements {
+                        let object = NSEntityDescription.insertNewObject(forEntityName: PersistentStoreConst.locationEntity,
                                                                          into: context) as! Location
 
                         object.measurementDate = measurement.0
